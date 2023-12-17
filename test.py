@@ -13,7 +13,6 @@ baud_rate = 9600  # Arduino seri bağlantı hızı ile eşleşmeli
 
 ser = serial.Serial(arduino_port, baud_rate)
 
-
 cred = credentials.Certificate("proje-1018d-firebase-adminsdk-o2hrl-66002258bb.json")
 firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://proje-1018d-default-rtdb.firebaseio.com/'  # Firebase projenizin URL'si
@@ -67,7 +66,8 @@ while True:
                 firebase_db.reference("/SensorData/Rotation/Z").set(json_data['SensorData']['Rotation']['Z'])
             
             if 'Temperature' in json_data['SensorData']:
-                firebase_db.reference("/SensorData/Temperature/Value").set(json_data['SensorData']['Temperature'])
+                firebase_db.reference("/SensorData/Temperature/Value").set(json_data['SensorData']['Temperature'])   
+                firebase_db.reference("Sicaklik/Sicaklik").set(json_data['SensorData']['Temperature'])
 
             if 'Time' in json_data['SensorData']:
                 firebase_db.reference("/SensorData/Time/Value").set(json_data['SensorData']['Time'])
