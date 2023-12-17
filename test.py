@@ -20,7 +20,10 @@ firebase_admin.initialize_app(cred, {
 data={}
 data_list = []
 
-loaded_model = joblib.load('decision_tree_model.pkl')
+#loaded_model = joblib.load('decision_tree_model.pkl')
+#loaded_model = joblib.load('logistic_model.pkl')
+loaded_model = joblib.load('random_forest_model.pkl')
+
 while True:
     if ser.in_waiting > 0:
         veri = ser.readline().decode('latin-1').rstrip()  # Seri porttan gelen veriyi oku ve boşlukları temizle
